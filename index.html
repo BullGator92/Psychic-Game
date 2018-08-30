@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
     <script src="assets/javascript/game.js"></script>
     
 </head>
@@ -18,15 +18,20 @@
       <p id="computerchoice-text"></p>
       <p id="wins-text"></p>
       <p id="losses-text"></p>
-      <p id="ties-text"></p>
+      <p id="guesses-text"></p>
+        
+      <input type="text" id="userGuesses"/>
+
+       <p>Your guesses: <span id = "demo"></span></p>
+        
     </div>
   
     <script type="text/javascript">
       // Creates an array that lists out all of the options the computer can choose from.
-      var computerOptions = ["abcdefghijklmnopqrstuvwxyz"];
+      var options = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
         // Enables random choice from the options array. This is the Computer's guess.
-        var computerChoice = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+        var computerChoice = options[Math.floor(Math.random() * options.length-1)];
   
       // Creating variables to hold the number of wins, losses, and guesses left. They start at 0, 0, and 9, respectively.
       var wins = 0;
@@ -40,41 +45,29 @@
       var winsText = document.getElementById("wins-text");
       var lossesText = document.getElementById("losses-text");
       var guessesText = document.getElementById("guesses-text");
-  
+      var userGuesses = document.getElementById("userGuesses");
+      userGuesses.onkeyup = myFunction;
+    
       // This function is run whenever the user presses a key.
-      document.onkeyup = function(event) {
-      }
+      document.onkeyup = function keyPress(event) {
+          var userGuess = event.key;
+      };
         // Determines which key was pressed.
-        var userGuess = event.key;
+        
 
         // Logs user guesses and displays them.
-        <input type="text" id="userGuesses" onkeyup = "myFunction()">
-
-        <p>Your guesses: <span id = "demo"></span></p>
-
-        function myFunction() {
-            var x = document.getElementById("fname").value;
-            document.getElementById("demo").innerHTML = x;
+        function myFunction(event) {
+            var userChar = userGuesses.value;
+            document.getElementById("guesses-text").innerHTML = userChar;
+            userGuesses.value = "";
         }
-        
-
-  
-        
-  
-        // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
-        if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
-  
-          if ((userGuess === "r") && (computerChoice === "s")) {
+         
+        // This logic determines the outcome of the game (win/loss), and increments the appropriate number
+        if ((userGuess === computerChoice)) {
             wins++;
-          } else if ((userGuess === "r") && (computerChoice === "p")) {
+          } else if ((userGuess !=== "r") && (computerChoice === "p")) {
             losses++;
           } else if ((userGuess === "s") && (computerChoice === "r")) {
-            losses++;
-          } else if ((userGuess === "s") && (computerChoice === "p")) {
-            wins++;
-          } else if ((userGuess === "p") && (computerChoice === "r")) {
-            wins++;
-          } else if ((userGuess === "p") && (computerChoice === "s")) {
             losses++;
           } else if (userGuess === computerChoice) {
             ties++;
@@ -87,9 +80,9 @@
           userChoiceText.textContent = "You chose: " + userGuess;
           winsText.textContent = "wins: " + wins;
           lossesText.textContent = "losses: " + losses;
-          guessesText.textContent = "ties: " + ties;
+          guessesText.textContent = "your guesses: " + ties;
         }
-      };
+      
     </script>
   
   </body>
