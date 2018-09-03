@@ -19,7 +19,7 @@
     var guessesLeftText = document.getElementById("guessesLeft-text");
     var userChoiceText = document.getElementById("userchoice-text");
 
-
+  
     {/* This function is run whenever the user presses a key. */}
     document.onkeyup = function(event) {
       var userGuess = event.key;
