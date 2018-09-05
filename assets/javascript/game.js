@@ -8,7 +8,7 @@
     // Creating variables to hold the number of wins, losses, and guesses left. They start at 0, 0, and 10, respectively. */}
     var wins = 0;
     var losses = 0;
-    var guessesLeft = 9;
+    var guessesLeft = 10;
     var guesses = [];
 
     // Create variables that hold references to the places in the HTML where we want to display things. */}
@@ -18,6 +18,7 @@
     var lossesText = document.getElementById("losses-text");
     var guessesLeftText = document.getElementById("guessesLeft-text");
     var userChoiceText = document.getElementById("userchoice-text");
+    guessesLeftText.textContent = "Guesses remaining: " + guessesLeft;
 
   
     // This function is run whenever the user presses a key. */}
@@ -37,7 +38,7 @@
     if (userGuess == computerChoice) {
       wins++;
       guesses = [];
-      guessesLeft = 9;
+      guessesLeft = 10;
       computerChoice = options[Math.floor(Math.random() * options.length)];
       console.log("computerChoice", computerChoice);
     } else if ((userGuess !== computerChoice) && (guessesLeft > 1)) {
@@ -45,7 +46,7 @@
     } else if (userGuess !== computerChoice) {
       losses++;
       guesses = [];
-      guessesLeft = 9;
+      guessesLeft = 10;
       computerChoice = options[Math.floor(Math.random() * options.length)];
     }
     
