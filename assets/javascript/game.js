@@ -2,7 +2,7 @@
     var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     // Enables random choice from the options array. This is the Computer's guess. */
-    var computerChoice = options[Math.floor(Math.random() * options.length)];
+    var computerChoice = options[Math.floor((Math.random() * options.length) - 1)];
     console.log(computerChoice);
 
     // Creating variables to hold the number of wins, losses, and guesses left. They start at 0, 0, and 10, respectively. */}
