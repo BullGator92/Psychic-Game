@@ -24,9 +24,10 @@
     // This function is run whenever the user presses a key. */}
     document.onkeyup = function(event) {
       var userGuess = event.key;
+      if (options.includes(userGuess)) {
       console.log(userGuess);
       guesses.push(userGuess); 
-    
+      
     // Logs user guesses and displays them.
     // function myFunction(event) {
     //   var userChar = userGuess.value;
@@ -55,6 +56,6 @@
     lossesText.textContent = "Losses: " + losses;
     guessesLeftText.textContent = "Guesses remaining: " + guessesLeft;
     userChoiceText.textContent = "You chose: " + guesses;
-
+      }
     };
 
