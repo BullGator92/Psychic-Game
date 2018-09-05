@@ -40,7 +40,7 @@
       guessesLeft = 9;
       computerChoice = options[Math.floor(Math.random() * options.length)];
       console.log("computerChoice", computerChoice);
-    } else if ((userGuess !== computerChoice) && (guessesLeft > 0)) {
+    } else if ((userGuess !== computerChoice) && (guessesLeft > 1)) {
       guessesLeft--;
     } else if (userGuess !== computerChoice) {
       losses++;
